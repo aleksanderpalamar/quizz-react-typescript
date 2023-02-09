@@ -5,8 +5,15 @@ export const Container = styled.div`
   flex-direction: column;  
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
+  padding: ${(props) => props.theme.spaces.$8}; 
+  max-width: 840px;
+  margin: 0 auto;
+  margin-top: ${(props) => props.theme.spaces.$80};
+
+  div {
+    display: flex;
+    align-items: center;
+  }
 
   header {
     display: flex;
@@ -35,6 +42,7 @@ export const Container = styled.div`
   footer {
     display: flex;
     align-items: center;
+    gap: ${(props) => props.theme.spaces.$4};
     
     button {
       all: unset;
@@ -46,11 +54,7 @@ export const Container = styled.div`
 
       svg {
         width: 32px;
-        height: 32px;
-
-        path {
-          fill: ${(props) => props.theme.colors.blue.typescript};
-        }
+        height: 32px;        
       }
 
       &:hover {
@@ -65,16 +69,19 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding: ${(props) => props.theme.spaces.$4};
-    
+    max-width: 100%;
+    margin: 0 ${(props) => props.theme.spaces.$4};
+    margin-top: ${(props) => props.theme.spaces.$64};
     header {
       h2 {
-        font-size: ${(props) => props.theme.fontSizes["3xl"]}
+        font-size: ${(props) => props.theme.fontSizes["2xl"]}
       }
       span {
-        font-size: ${(props) => props.theme.fontSizes["sm"]};
+        font-size: ${(props) => props.theme.fontSizes["md"]};
       }
       p {
-        font-size: ${(props) => props.theme.fontSizes["sm"]};
+        font-size: ${(props) => props.theme.fontSizes["lg"]};
+        text-align: justify;
       }
     }
   }

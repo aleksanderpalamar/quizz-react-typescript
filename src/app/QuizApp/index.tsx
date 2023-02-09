@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { questions } from "../../Data/questions";
 import { ResultPage } from "../../pages/ResultPage";
 import { Container, Progress, ProgressBar, QuizContainer } from "./styles";
-import _ from "lodash";
 
 export default function QuizApp() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(300);  
 
   function formatTime(timeInSeconds: number) {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -33,9 +32,6 @@ export default function QuizApp() {
     }
   }, [currentQuestion]);
 
-  const randomizedQuestions = _.shuffle(questions);
-  let currentIndex = 0;
-
   function handleOptionClick(option: string) {
     if (option === questions[currentQuestion].answer) {
       setScore(score + 1);
@@ -57,7 +53,7 @@ export default function QuizApp() {
               </p>
               <p>
                 Tempo restante: <span>{formatTime(timeLeft)}</span>
-              </p>
+              </p>              
             </div>
           </ProgressBar>
           <QuizContainer>

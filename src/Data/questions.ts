@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+
 interface Question {
   id: number;
   question: string;
@@ -6,7 +9,7 @@ interface Question {
   answer: string;
 }
 
-export const questions = [
+export const questions = [  
   {
     id: 1,
     question: "Qual sintaxe utilizamos para iterar em arrays no React?",

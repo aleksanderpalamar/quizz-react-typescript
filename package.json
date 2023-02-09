@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/node": "^18.13.0",
+    "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",

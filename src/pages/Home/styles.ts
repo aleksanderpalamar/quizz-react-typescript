@@ -16,6 +16,8 @@ export const HomeContainer = styled.div`
   div {
     margin-bottom: ${(props) => props.theme.spaces.$4};
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: ${(props) => props.theme.spaces.$4};
 
     span {
@@ -26,6 +28,25 @@ export const HomeContainer = styled.div`
       svg {
         width: 20px;
         height: 20px;
+      }
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      gap: ${(props) => props.theme.spaces.$2};
+
+      button {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        
+        background-color: ${(props) => props.theme.colors.primary.purple};
+        padding: ${(props) => props.theme.spaces.$1};
+        border-radius: ${(props) => props.theme.radius.md};
       }
     }
   }
