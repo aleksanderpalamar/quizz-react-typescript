@@ -1,12 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { Key, useContext, useEffect, useState } from "react";
+import { LanguageContext } from "../../context/context";
 import { questions } from "../../Data/questions";
+
 import { ResultPage } from "../../pages/ResultPage";
 import { Container, Progress, ProgressBar, QuizContainer } from "./styles";
 
 export default function QuizApp() {
+  const { texts } = useContext(LanguageContext);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(300);  
+  const [timeLeft, setTimeLeft] = useState(300);
 
   function formatTime(timeInSeconds: number) {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -21,7 +24,7 @@ export default function QuizApp() {
       intervalId = setInterval(() => {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft === 0) {
-            clearInterval(intervalId!);            
+            clearInterval(intervalId!);
             setCurrentQuestion(currentQuestion + 5);
             return 300;
           }
@@ -33,10 +36,11 @@ export default function QuizApp() {
   }, [currentQuestion]);
 
   function handleOptionClick(option: string) {
+    const options = questions[currentQuestion].options as string[];
+
     if (option === questions[currentQuestion].answer) {
       setScore(score + 1);
     }
-
     setCurrentQuestion(currentQuestion + 1);
     setTimeLeft(300);
   }
@@ -49,23 +53,23 @@ export default function QuizApp() {
             <Progress value={currentQuestion + 1} max={questions.length} />
             <div>
               <p>
-                Questão {currentQuestion + 1} de {questions.length}
+                {texts.question} {currentQuestion + 1} de {questions.length}
               </p>
               <p>
-                Tempo restante: <span>{formatTime(timeLeft)}</span>
-              </p>              
+                {texts.timeLeft} <span>{formatTime(timeLeft)}</span>
+              </p>
             </div>
           </ProgressBar>
           <QuizContainer>
-            <p>{questions[currentQuestion].question}</p>
+            <p>{texts.body.question[currentQuestion].question}</p>
             {questions[currentQuestion].code && (
               <pre>
                 <code>{questions[currentQuestion].code}</code>
               </pre>
             )}
             <div>
-              {questions[currentQuestion].options.map((option) => (
-                <button onClick={() => handleOptionClick(option)}>
+              {questions[currentQuestion].options.map((option, index) => (
+                <button key={index} onClick={() => handleOptionClick(option)}>
                   {option}
                 </button>
               ))}

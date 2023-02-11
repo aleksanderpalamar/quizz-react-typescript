@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { Router } from "./Router/Router";
 import { GlobalStyles } from "./styles/global";
 import { defaultTheme } from "./styles/theme/default";
-import LanguageProvider from "./context/LanguageContext";
+import LanguageProvider from "./context/context";
 
 export function App() { 
   return (

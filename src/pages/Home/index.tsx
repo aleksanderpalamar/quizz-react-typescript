@@ -3,10 +3,10 @@ import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import QuizApp from "../../app/QuizApp";
 import { HomeContainer } from "./styles";
-import { LanguageContext } from "../../context/LanguageContext";
 
 import ReactLogoIMG from "../../assets/react-js.svg";
 import { Footer } from "../../components/Footer";
+import { LanguageContext } from "../../context/context";
 
 export default function Home() {
   const { language, changeLanguage } = useContext(LanguageContext);
@@ -69,7 +69,7 @@ export default function Home() {
             <ListBullets />
             38 {texts.question}
           </span>
-          <div className="footer">
+          <div className="footer">            
             <button onClick={() => changeLanguage("en")}>EN</button>
             <button onClick={() => changeLanguage("pt")}>PT</button>
           </div>
@@ -78,7 +78,7 @@ export default function Home() {
           {texts.description}
         </p>
         <button onClick={() => setStartQuiz(true)}>
-          Iniciar Quiz
+          {texts.textButton}
           <ArrowRight />
         </button>
         <Footer />
